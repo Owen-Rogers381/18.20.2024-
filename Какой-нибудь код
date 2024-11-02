@@ -1,0 +1,32 @@
+#include <iostream>
+
+using namespace std;
+
+bool isLucky(int number) {
+    if (number < 100000 || number > 999999) {
+        return false; // Число не шестизначное
+    }
+
+    int sum1 = (number / 100000) + ((number % 100000) / 10000) + ((number % 10000) / 1000);
+    int sum2 = ((number % 1000) / 100) + ((number % 100) / 10) + (number % 10);
+
+    return sum1 == sum2;
+}
+
+int main() 
+{   setlocale(LC_ALL, "");
+
+    int number;
+    cout << "Введите шестизначное число: ";
+    cin >> number;
+
+    if (isLucky(number)) {
+        cout << "Число " << number << " счастливое!" << std::endl;
+    }
+    else {
+        cout << "Число " << number << " не счастливое." << std::endl;
+    }
+
+    return 0;
+}
+
